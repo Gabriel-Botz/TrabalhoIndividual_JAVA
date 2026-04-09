@@ -25,7 +25,6 @@ public class Sist_CaixaElet {
             System.out.println("\nDigite uma opção: ");
             opcao = sc.nextInt();
 
-
             switch (opcao){
 
                 case 1:
@@ -63,9 +62,13 @@ public class Sist_CaixaElet {
                     }
                     break;
 
-                case 4: sc.nextLine();
+                case 4:
+                    System.out.println("Saindo...");
+                    System.exit(0);
+                    break;
 
-                    default:
+                default:
+                    System.out.println("Opção inválida");
 
             }
 

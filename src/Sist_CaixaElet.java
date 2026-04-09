@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Sist_CaixaElet {
@@ -5,11 +6,54 @@ public class Sist_CaixaElet {
 
         Scanner sc = new Scanner(System.in);
 
+        ArrayList<ContaBancaria> Contas = new ArrayList<>();
+
+        ContaBancaria c1 = new ContaBancaria(1200, "Gabriel Botelho");
+        ContaBancaria c2 = new ContaBancaria(1300, "João Paulo");
+        ContaBancaria c3 = new ContaBancaria(1400, "Marcelo Silva");
+        ContaBancaria c4 = new ContaBancaria(1500, "Diego Abreu");
+
+        Contas.add(c1);
+        Contas.add(c2);
+        Contas.add(c3);
+        Contas.add(c4);
+
+        String nomeDigitado = "";
+        int contaDigitada;
+
+        System.out.println("\n\n====== C A I X A - E L E T R Ô N I C O ======");
+        System.out.println("|                                           |");
+        System.out.println("|   Digite o seu nome completo:             |");
+        System.out.println("|                                           |");
+        System.out.println("=============================================");
+        nomeDigitado = sc.nextLine();
+
+        System.out.println("\n\n====== C A I X A - E L E T R Ô N I C O ======");
+        System.out.println("|                                           |");
+        System.out.println("|   Digite o número da conta:               |");
+        System.out.println("|                                           |");
+        System.out.println("=============================================");
+        contaDigitada = sc.nextInt();
+
+        boolean contaEncontrada = false;
+        ContaBancaria contaLogada = null;
+
+        for (ContaBancaria c : Contas){
+
+            if (nomeDigitado.equals(c.titular) && contaDigitada == c.numeroConta){
+                System.out.println("Bem Vindo Sr(a). " + c.titular);
+                contaEncontrada = true;
+                contaLogada = c;
+                break;
+            }
+        }
+
+        if (!contaEncontrada){
+            System.out.println("Conta não encontrada!");
+            System.exit(0);
+        }
+
         int opcao = 0;
-        int contadorSaque = 0;
-        double saldo = 0;
-        double valorSaque;
-        double valorDeposito = 0;
 
         do {
 
@@ -28,38 +72,19 @@ public class Sist_CaixaElet {
             switch (opcao){
 
                 case 1:
-                    System.out.println("\nSeu saldo é: " + saldo);
+                    contaLogada.verSaldo();
                     break;
 
                 case 2:
                     System.out.println("\nDigite o valor do depósito: ");
-                    valorDeposito = sc.nextDouble();
-                    saldo = saldo + valorDeposito;
-                    System.out.println("\nDeposito realizado com sucesso!\nSaldo atual: " + saldo);
+                    double valorDeposito = sc.nextDouble();
+                    contaLogada.depositar(valorDeposito);
                     break;
 
                 case 3:
-
-                    if (contadorSaque == 3) {
-                        System.out.println("\nLimite de saque atingido!");
-                    }else{
-
-                    System.out.println("\nDigite o valor de saque: ");
-                    valorSaque = sc.nextDouble();
-
-                    if (valorSaque > saldo){
-                        System.out.println("\nSaldo insuficiente! ");
-                    } else if (valorSaque >100) {
-                        System.out.println("Valor de saque máximo permitido: R$1000,00");
-
-                    } else {
-                        contadorSaque ++;
-                        saldo = saldo - valorSaque;
-
-                        System.out.println("\nSaque realizado com sucesso!\nSaldo atual: " + saldo);
-
-                     }
-                    }
+                    System.out.println("\nDigite o valor do saque: ");
+                    double valorSaque = sc.nextDouble();
+                    contaLogada.sacar(valorSaque);
                     break;
 
                 case 4:
@@ -69,12 +94,7 @@ public class Sist_CaixaElet {
 
                 default:
                     System.out.println("Opção inválida");
-
             }
-
-
         }while (true);
-
-
     }
 }

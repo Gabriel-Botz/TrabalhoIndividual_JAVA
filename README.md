@@ -1,100 +1,137 @@
-# 💳 Simulador de Caixa Eletrônico
+# 🏦 Simulador de Caixa Eletrônico em Java
 
-## 📌 Descrição do Projeto
-Este projeto consiste no desenvolvimento de um Simulador de Caixa Eletrônico em Java, com o objetivo de aplicar conceitos fundamentais de lógica de programação e Programação Orientada a Objetos (POO).
+## 📌 Descrição
 
-O sistema permite que um usuário acesse sua conta bancária e realize operações básicas como consulta de saldo, depósito e saque, respeitando regras de negócio definidas.
+Este projeto consiste no desenvolvimento de um **simulador de caixa eletrônico** em Java, dividido em duas etapas principais:
 
----
+1. Implementação utilizando **lógica procedural** (estrutura de controle no `main`)
+2. Refatoração para **Programação Orientada a Objetos (POO)**
 
-## 🚀 Funcionalidades
-- 🔐 Login com nome e número da conta
-- 💰 Consulta de saldo
-- ➕ Depósito de valores
-- ➖ Saque de valores
-- 🔁 Menu interativo com do-while e switch
-
----
-
-## 📋 Regras de Negócio
-- 💸 Cada conta possui um saldo inicial de R$ 50,00 (bônus de boas-vindas)
-- 🔒 Máximo de 3 saques por execução
-
-### ⚠️ Ao tentar um 4º saque
-> Saques diários permitidos: 3. Limite atingido!
-
-- 💵 Valor máximo por saque: R$ 1.000,00
-
-### ❌ Não é permitido
-- Sacar valores maiores que o saldo
-- Sacar ou depositar valores menores ou iguais a zero
+O sistema permite operações básicas como:
+- Consulta de saldo
+- Depósito
+- Saque
 
 ---
 
 ## 🧠 Conceitos Aplicados
 
-### 🔹 Lógica de Programação
-- Estrutura de repetição: do-while
-- Estrutura de decisão: switch-case
-- Controle de fluxo e validações
+### 🔹 Parte 1 - Lógica e Estruturas de Controle
+- `do-while`
+- `switch-case`
+- Controle de fluxo
+- Validação de regras de negócio
 
-### 🔹 Programação Orientada a Objetos (POO)
-- Criação de classes e objetos
-- Encapsulamento de dados
-- Métodos com regras de negócio
-- Uso de construtor
+### 🔹 Parte 2 - Programação Orientada a Objetos
+- Classes e objetos
+- Encapsulamento
+- Métodos
+- Organização de código
+
+---
+
+## ⚙️ Funcionalidades
+
+✔️ Ver saldo  
+✔️ Realizar depósito  
+✔️ Realizar saque  
+✔️ Menu interativo no terminal  
+
+---
+
+## 🚨 Regras de Negócio
+
+- O usuário pode realizar no máximo **3 saques por dia**
+- Caso tente um 4º saque:
+
+```txt
+Limite de saques diários atingido
+```
+
+- O valor máximo por saque é de:
+
+```txt
+R$ 1.000,00
+```
 
 ---
 
 ## 🏗️ Estrutura do Projeto
 
-### Classe Sist_CaixaElet
-Responsável por:
-- Gerenciar o fluxo do sistema
-- Realizar login do usuário
-- Exibir o menu e capturar opções
+### 📁 Parte 1 - Lógica no `main`
 
-### Classe ContaBancaria
-Responsável por:
-- Armazenar dados da conta (numero, titular, saldo)
-- Implementar regras de negócio
+Toda a lógica do sistema é implementada diretamente na classe principal utilizando estruturas de controle.
 
-#### Métodos
-- sacar(double valor)
-- depositar(double valor)
-- verSaldo()
+---
+
+### 📁 Parte 2 - Orientação a Objetos
+
+#### 🔹 Classe `ContaBancaria`
+
+**Atributos:**
+- `numero`
+- `titular`
+- `saldo`
+
+**Métodos:**
+
+```java
+void depositar(double valor)
+```
+
+```java
+boolean sacar(double valor)
+```
+
+---
+
+## 💻 Exemplo de Uso
+
+```java
+ContaBancaria conta = new ContaBancaria(123, "Gabriel", 1000.0);
+
+conta.depositar(500);
+conta.sacar(200);
+
+System.out.println("Saldo atual: " + conta.getSaldo());
+```
 
 ---
 
 ## ▶️ Como Executar
 
-### Compilar
-``bash
-javac Sist_CaixaElet.java ContaBancaria.java
-java Sist_CaixaElet ``
+1. Clone o repositório:
+```bash
+git clone https://github.com/seu-usuario/seu-repositorio.git
+```
 
-## Dados de exemplo
-- Nome: Gabriel Botelho
-- Conta: 1200
+2. Abra o projeto em uma IDE:
+- IntelliJ
+- Eclipse
+- VS Code
 
-## 📊 Exemplo de Uso
+3. Execute a classe `Main`
 
-1 - Ver saldo
-2 - Depositar
-3 - Sacar
-4 - Sair
+---
 
 ## 🎯 Objetivo Acadêmico
 
-Este projeto foi desenvolvido como atividade prática para consolidar conhecimentos em:
+Este exercício tem como objetivo reforçar:
 
-- Estruturas de controle
-- Manipulação de dados
-- Modelagem orientada a objetos
+- Lógica de programação  
+- Estruturas de controle  
+- Transição de código procedural para orientação a objetos  
+- Boas práticas de organização de código  
+
+---
+
+## 📚 Tecnologias Utilizadas
+
+- Java  
 
 ---
 
 ## 👨‍💻 Autor
 
-Gabriel Carneiro Botelho  
-Estudante de Análise e Desenvolvimento de Sistemas
+**Gabriel Carneiro Botelho**  
+Estudante de Análise e Desenvolvimento de Sistemas  
